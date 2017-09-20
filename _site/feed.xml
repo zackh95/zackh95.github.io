@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Welcome to my Site</title>
+    <title>Zack Hauck</title>
     <description>I might eventually blog and stuff, I dunno yet</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <updated>2017-09-20T16:27:31-04:00</updated>
+    <updated>2017-09-20T16:34:46-04:00</updated>
     <id></id>
     <author>
       <name>Zack Hauck</name>
