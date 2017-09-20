@@ -1,139 +1,98 @@
-# dactl
-dactl is a fast, modern and configurable [Jekyll](http://jekyllrb.com/) theme with some tricks up it's sleeve. It has a live theme switcher and it's main blog layout display prominent hero images for posts with colored overlays and nice animations.
+## lanyon-plus
 
-![light theme](uploads/screenshot_desktop_light.jpg)
-![dark theme](uploads/screenshot_desktop_dark.jpg)
+Based on Jekyll theme: [Lanyon](http://lanyon.getpoole.com) by [**Mark Otto**](https://github.com/mdo)
 
-## Features
-Though minimalistic-looking by nature, dactl is easily configurable and includes quite a lot of niceties:
+* add-ons by [Samir Amin](http://sbamin.com)
+* [Site features](http://sbamin.com/disclosure#i-classfa-fa-thumbs-o-up-credits-for-site-featuresi) | [Example contents](https://dyndna.github.io/lanyon-plus/blog/2013/01/01/example-content/)
+* License: Open sourced under the [MIT license](https://sbamin.com/disclosure/#theme-major-credit--license).
 
-Main features:
-* Customizable blog layout - choose how your posts will be displayed
-* Light/Dark live theme switcher
-* Inline footnotes using [Barefoot](https://github.com/philgruneich/barefoot)
-* [IcoMoon](https://icomoon.io/) custom icon set (~4kb)
-* Typography and components size set in `rem` and `em` which makes them easily scalable
-* Responsive design
+[![Build Status](https://travis-ci.org/dyndna/lanyon-plus.svg?branch=master)](https://travis-ci.org/dyndna/lanyon-plus)
 
-Jekyll-specific features:
-* Pagination (default: 5 posts per page)
-* Fully compatible with Jekyll 3.x and GitHub Pages
-* SEO optimized
-* [Google Analytics](https://www.google.com/analytics/) support
-* [Disqus](https://disqus.com/) comments support
-* Syntax highlighter using [Rouge](https://github.com/jneen/rouge) with numbered code lines
+[Demo](http://dyndna.github.io/lanyon-plus) | [Download v1.1.1](https://github.com/dyndna/lanyon-plus/releases/tag/v1.1.1)
 
-Other features:
-* Archive page
-* About page
-* Tags functionality and tags pages
-* Link posts functionality
+### Required edits:
 
-Some of the features listed above can be easily configured or disabled by you.
+#### _config.yml
 
-## Information about dactl
-At it's core, dactl is a forked version of [daktilo](https://github.com/kronik3r/daktilo) but it has been almost entirely rewritten from scratch.  
-I have just started my journey in the world of web development, learning new things on the way.  
-Looking for a way to put my newly acquired skills to test I found Jekyll and I quickly realized that it's going to be a good learning experience since I don't like building 'dummy' projects.  
-I've built this theme as a way to develop my skills further.
+*   Edit lines where text string `foo` is present with relevant information. 
+*   Add relevant author and owner information
+    *   For proper sidebar, meta info below post title, and footer bar, add at least twitter, google plus info under `owner` and `sidebar` section.
+    *   Uncomment and add relevant user names/keys to enable features, e.g., google analytics, disqus comments, twitter widget, google custom search.
 
-You can find credits at the bottom of this Readme file.  
-**All** feedback is welcome, both positive and negative.
+#### CNAME
 
-## Installation
-### Running locally
-Assuming you've got Jekyll [installed](https://jekyllrb.com/docs/installation/), clone or download this repo, `cd` to wherever you've put `dactl` folder and run `jekyll -s'`
+*   Read [Using a custom domain with GitHub Pages](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) for set-up details.
+*   If you are hosting website on domain other than `github.io`, rename `CNAME.sample` file to `CNAME`, and add your custom domain name, e.g., `example.com` (only one domain is allowed), otherwise remove `CNAME` file if you want to host at default `github.io`. 
+*   If you are hosting website on `github.io`, replace `example.com` with `https://<github-username>.github.io/<repository_name>` (for project site) or `https://<github-username>.github.io` (for user site) under `site.url` and `site.urlimg` in `_config.yml` and `_prose.yml` file.
 
-### Hosting on GitHub
-Fork this repo and rename it to `yourusername.github.io`... and that's it!  
-Your new dactl-themed Jekyll blog should be up and running at yourusername.github.io.  
+#### .travis.yml
+*   See more at [https://travis-ci.org/getting_started](https://travis-ci.org/getting_started)
 
-## Usage
-### Slight warning
-dactl relies heavily on modern CSS properties such as [mix-blend-mode](http://www.w3.org/TR/compositing-1/#mix-blend-mode), [-webkit-filter](http://www.w3.org/TR/filter-effects-1/) and [css variables](https://drafts.csswg.org/css-variables/) so it may not work properly on older browsers.  
-It was tested with and works fully on webkit-powered browsers - Safari, Chrome, Vivald.
+#### _prose.yml
 
-### Layout configurations
-By default dactl uses blog layout which you can see below or check for yourself in the live version.
+*   [https://github.com/prose/prose/wiki/Getting-Started](https://github.com/prose/prose/wiki/Getting-Started)
+*   Edit `example.com` with your domain name.
+*   You may edit names for custom categories.
 
-Main blog layout displays 5 posts. Each post has a heading contained in a medium-sized tile - with an color overlay over the background image. You need to set the image and color of the overlay in post's YAML front matter.
+#### robots.txt
 
-If you don't want to use images for post headings you can easily configure the layout to you needs by changing settings located in `configure.yml` file, both post and blog layout will adapt accordingly.
+* replace `example.com` with your valid url.
+* Edit search engine inclusion/exclusion if desired.
 
-Options include:
-* Use or don't use post heading images (Blog & Post)
-* Show full post content or post excerpts (Blog)
-* Show post titles only (Blog)
+#### page specific edits
 
-## Additional information about some features
-### Hero images and blog layout
-Liquid 'script' which is used to append correct hero image and overlay color as set in post YAML Front matter was written by me and while it's really basic it functions properly.  
-You can read more about it and see the code in `include/utils/hero.html`.
+*   `_data/socialmedia.html`
+    *   Replace user `foo` with appropriate username
 
-### Theme switcher
-Theme switcher is made in vanilla Javascript and works using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables). Values (colors) specified for each variable are injected into `:root` on every page load.  
-User theme choice is saved in browser's [Local Storage](https://www.w3schools.com/html/html5_webstorage.asp) and is persistent through sessions.
+*   `_includes/`
+    *   Check if file paths for appropriate urls have valid css files, scripts, icons, and images in `head.html` and `head_minimal.html`, else comment html tags which are not being used.
+    *   Also, check if variables (twitter, google plus, linkedin, google analytics key and disqus username, etc.) are specified in `_config.yml` located under root path.
+    *   You may edit `meta_info.html`, `footer.html` and similar include files to add/remove elements in page meta bar, footer, etc.
+    *   For publications page, `mypubs.html` and `myaoi.html` are trimmed outputs from [zot_bib_web](https://github.com/davidswelt/zot_bib_web). Github pages can not dynamically build these pages. Alternately, you may export `bib` format for publications under `/files/` directory which can be parsed dynamically using [bibbase.org](http://bibbase.org)
+    *   `_includes/footer.html`: Edit copyright information as needed.
+*   `_layouts`
+    *   To add/remove/reorder page/post contents, edit `default.html` plus `page.html` or `post.html`.
+*   `_posts`
+    *   Live blog posts goes here with markdown formatted post. File name format must have following date-title format `yyyy-mm-dd-title.md` for jekyll to render blog post correctly. 
+    *   YAML sample header shows all available options. Minimal required elements are: layout, title and date. Date tag overrides date given in post file name.
+*   `blog/index.html`
+    *   Edit blog title and description.
+*   `images/`
+    *   Under `icons` directory, keep appropriate sized favicons and thumbnails as specified in `_includes/head.html` and `_includes/head_minimal.html`
+    *   Also, keep `favicon.png` and `favicon.ico` in root directory.
+    *   Final, `images/icons/` should have following images with exact filenames and image size as specified in respective filenames. These images can be generated using online *favicon generator*. Replace `foo` with your site title or other name if desired.
 
-You can edit the colors of both Light and Dark themes in `themeswitcher.js` file found in `_assets/js/`.
-
-### Inline Barefoot footnotes
-dactl uses [Barefoot](https://github.com/philgruneich/barefoot) plugin to create nice looking inline footnotes from those generated by [kramdown](https://kramdown.gettalong.org/), daktl's markdown processor.
-
-Barefoot description (from project's page):
->[Barefoot](https://github.com/philgruneich/barefoot) is a lightweight [Bigfoot.js](https://github.com/lemonmade/bigfoot) alternative written in vanilla Javascript to create beautiful inline footnotes.  
-Barefoot grabs the common markup used for footnotes on the web, mostly generated by Markdown processors, and transform it into beautiful and meaningful footnotes.
-
-### CSS
-CSS is built by via Jekyll's SASS compiler. Source partial SASS files are located in `_sass` folder, included into `main.scss`, and compile to `main.css`.
-
-### Additional pages
-#### Archive page
-Archive page displays all of your posts grouped by month. Under this page's title you'll find a Searchbox which is hooked up to DuckDuckGo's `:site` search and will open the results in a new tab.  
-You need to provide your blog's web address in `search_path` field found in `_config.yml` for it to work.
-#### About page
-About page displays your photo under the title (set in `config.yml`) and the content of about.md.
-#### Tags & Tags Pages
-Tags and tag pages are supported by using Jekyll's native collections functionality.  
-
-## Even more info
-### Rems, font-size and scaling
-dactl is built almost entirely with `rem`s (instead of pixels). `rem`s are like `em`s, but instead of building on the immediate parent's font-size, they build on the root element, `<html>`.
-
-By default, dactl uses the following:
 ~~~
-html {
-  font-size: 20px;
-  line-height: 1.6;
-}
-@media (max-width: 48rem) {
-  html {
-    font-size: 18px;
-  }
-}
+example.com/images/icons/apple-touch-icon-precomposed.png
+example.com/images/icons/apple-touch-icon-72x72-precomposed.png
+example.com/images/icons/apple-touch-icon-114x114-precomposed.png
+example.com/images/icons/apple-touch-icon-144x144-precomposed.png
+example.com/images/icons/apple-touch-icon-180x180.png
+example.com/images/icons/android-icon-192x192.png
 ~~~
-To easily scale your site's typography and components, simply customize the base font-sizes found in `_sass/variables.scss` file.
 
-(Lifted from [here](https://github.com/poole/poole#rems-font-size-and-scaling))
+*   `pages/about.md`
+    *   YAML variable `imagefeature` shoud have image path relative to `images/` directory, i.e., `foo.png` will link to `example.com/images/foo.png`
+    *   Specify `site.owner.avatar` and `site.owner.twitter` along with other variables in `_config.yml`
+*   `syspages/`:
+    *   Edit page title and description in YAML front matter.
+    *   For web search to work, specify [Google Custom Search Engine](https://cse.google.com) API key for `google_search` variable.
+    *   Tag generation is experimental and dynamic size for tag box may need to be adjusted if you have more than 100 posts with one or two frequently occurring tags. 
+    *   All `{% for ... %}...{% endfor %}` loop operations will increase site build time, and remove such features (tags, meta info, related posts, etc.) under `_includes`, `_layouts` and `syspages` if required.
+*   `pages/contact.md`
+    *   Edit page title and description.
+    *   Edit address, driving direction url, etc.
+*   `pages/cv.md`
+    *   Edit `_config.yml` to add twitter, google plus, linkedin, google scholar, ORCID profile info under owner heading.   
+    *   Add pdf at `{{ site.url }}/cv/cv.pdf` 
+*   `pages/publications.md`
+    *   Add your publications at `/files/mypubs.bib` and `_includes/mypubs.html`. See above under `_includes` for more.
+*   `pages/disclosure.md`
+    *   Appreciated if you keep relevant credits in disclosure page.
+*   `humans.txt`
+    *   Replace `foo` with your name.
+*   `rfeed.xml`
+    *   Not required unless you are cross-posting about R language on blog aggregation site(s).
 
-## Credits
-### Resources used
-- [IcoMoon.io](https://icomoon.io/)
-- [Normalize.css](https://github.com/necolas/normalize.css) - Nicolas Gallagher
-- [Theme switcher](https://www.fdp.io/blog/2016/11/08/theming-via-css-properties/) - Fernando Paredes
-- [Barefoot](https://github.com/philgruneich/barefoot) - Philip Gruneich
-- [The Noun Project](https://thenounproject.com/) - Icon used as dactl's logo - [Artem Kovyazin](https://thenounproject.com/term/raisin/446158), icon used as 'avatar' in About [Drishya](https://thenounproject.com/term/profile/963272)
+END
 
-### Inspiration and thoughtful code-jacking
-Inspiration and bits of things listed below are present inside dactl's code:
-- [Daktilo](https://github.com/kronik3r/daktilo) - dactl is based on Daktilo and inherits it's one-column layout.
-- [Hydejack](https://github.com/qwtel/hydejack/) - I've learned a lot about Jekyll when I took apart [@qwtel](https://github.com/qwtel/)'s excellent fork of [Hyde](https://github.com/poole/hyde) theme. I embraced his more partials = everything is easier to edit policy. Hydejack theme gave me an idea on how to create hero images liquid scripting, loading google fonts and using rem's/em's and more.
-- [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) - This guy makes awesome themes and writes a lot about Jekyll and it's more obscure use cases on his blog, [Made Mistakes](https://mademistakes.com). Looking through his theme's code - Minimal Mistakes in particular - gave me lot of information about how to build a robust theme and how to make it configurable within `_config.yml`
-- [Trophy](https://github.com/thomasvaeth/trophy-jekyll) - Link border slide animation SASS mixin which I slightly modified to be able to easily change the direction of the animation.
-- Various blog posts about Jekyll and [Stackoverflow](https://www.stackoverflow.com) posts with useful [Liquid](https://github.com/Shopify/liquid) snippets.
-
-## License
-All parts of dactl Jekyll theme are free to use and abuse under the open-source [MIT license](http://opensource.org/licenses/mit-license.php).
-
-## TO DO
-- [ ] Inline critical `.css` in `<head>` for faster load times
-- [ ] Fix theme-switcher - sometimes it does not inject all of the colors properly on first page load and a refresh, fixes itself after switching the theme back and forth.
